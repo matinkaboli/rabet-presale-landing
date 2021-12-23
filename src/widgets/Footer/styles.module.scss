@@ -1,0 +1,143 @@
+@import "styles/vars";
+
+.footer {
+  padding-top: 75px;
+  padding-bottom: 25px;
+
+  @media (max-width: $xl) {
+    padding-bottom: 40px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: $dove-gray;
+  white-space: nowrap;
+}
+
+.ul {
+  padding-left: 0;
+  margin-top: 10px;
+
+  li {
+    list-style: none;
+  }
+}
+
+.ul > li {
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  height: 33px;
+}
+
+.ul > li:before {
+  content: "•";
+  padding-right: 4px;
+  font-size: 30px;
+}
+
+.social ul > li a {
+  display: flex;
+  align-items: center;
+}
+
+.social ul > li:before {
+  content: none;
+  padding-right: 0;
+}
+
+.ul > li a {
+  font-size: 18px;
+  line-height: 1.56;
+  color: black;
+  text-decoration: none !important;
+  white-space: nowrap;
+
+  svg {
+    margin-right: 10px;
+  }
+}
+
+.ul > li a[aria-disabled="true"] {
+  cursor: default;
+  color: $dove-gray;
+}
+
+.soon {
+  font-size: 14px;
+}
+
+.copyright {
+  font-size: 16px;
+  line-height: 2;
+  text-align: center;
+  color: $abbey;
+  font-weight: normal;
+  margin: 16px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    text-decoration: none !important;
+    color: $abbey;
+  }
+
+  a:hover {
+    color: $abbey;
+  }
+
+  span {
+    display: block;
+    width: 1.4px;
+    height: 20px;
+    background-color: $abbey;
+    margin-right: 7.5px;
+    margin-left: 9.5px;
+  }
+}
+
+@media(max-width: $md) {
+  .social ul {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+
+    svg {
+      display: inline-block;
+      width: 80px;
+      height: auto;
+    }
+  }
+
+  .social ul > li a span {
+    display: none;
+  }
+
+  .social ul > li a svg {
+    width: auto;
+    height: 30px;
+  }
+
+  .social ul > li a {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: $sm) {
+  .title {
+    font-size: 18px;
+  }
+
+  .ul > li a {
+    font-size: 16px;
+  }
+  .copyright {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}

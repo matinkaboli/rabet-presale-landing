@@ -1,0 +1,136 @@
+@import "styles/vars";
+
+.clearfix {
+  padding: 30px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+
+  li:not(:first-child) a {
+    text-decoration: none !important;
+    margin-left: 36px;
+    font-size: 16px;
+    color: $dove-gray;
+  }
+
+  li a.download, li a.github {
+    margin-left: 24px;
+    font-size: 14px;
+  }
+
+  li a:hover {
+    color: black;
+    transition: 0.3s ease-in-out;
+  }
+
+  li:not(:first-child, .connect) {
+    @media (max-width: $lg) {
+      display: none;
+    }
+  }
+}
+
+.overlayMenu {
+  display: none;
+  @media (max-width: $lg) {
+    display: flex;
+  }
+}
+
+.active {
+  color: black !important;
+}
+
+.logo svg {
+  width: 158px;
+  height: auto;
+}
+
+.circleImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 331px;
+  z-index: -1;
+}
+
+.download {
+  width: 109px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  background: black;
+  border-color: black;
+  color: white !important;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-:hover {
+    color: white;
+  }
+}
+
+.github {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: black !important;
+  border: 1px solid $SecondaryAlto;
+
+  &-:hover {
+    color: black;
+  }
+}
+
+.git-svg {
+  margin-right: 8px;
+  width: 24px;
+  height: 23px;
+}
+
+.star-svg {
+  margin-right: 4px;
+  width: 15px;
+  height: 14px;
+}
+
+.btn {
+  width: 142px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wallet {
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  display: block;
+  border-radius: 2px;
+  border: 1px solid $SecondaryAlto;
+  padding: 0 14px;
+}
+
+@media (max-width: $sm) {
+  .logo svg {
+    width: 150px;
+  }
+}
+
+@media (min-width: $large-scale) {
+  .circleImg {
+    display: none;
+  }
+}

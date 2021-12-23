@@ -1,0 +1,77 @@
+@import "styles/vars";
+
+.layout {
+  margin-top: 153px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.31;
+  margin-bottom: 24px;
+}
+
+.par {
+  font-size: 18px;
+  line-height: 1.67;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: $Tundora;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  background: $Concrete;
+  margin: 20px 0;
+}
+
+.details {
+  border-radius: 11px;
+  border: 1px solid $Concrete;
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+
+  .box:first-child {
+    border-bottom: 1px solid $Concrete;
+  }
+}
+
+.receive, .remain {
+  box-sizing: border-box;
+}
+
+.box {
+  padding: 22px 0;
+  text-align: center;
+
+  &-value {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    svg {
+      margin: 0 8px;
+    }
+  }
+
+  &-subject {
+    font-size: 16px;
+    line-height: 1.63;
+    color: $dove-gray;
+  }
+}
+
+@media(max-width: $sm) {
+  .layout {
+    margin-top: 100px;
+  }
+  .box-value {
+    font-size: 18px;
+  }
+
+  .box-subject {
+    font-size: 14px;
+  }
+}

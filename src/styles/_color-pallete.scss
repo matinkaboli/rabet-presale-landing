@@ -1,0 +1,32 @@
+@import "vars";
+
+$themes: (
+        light: (
+                color-background: transparent,
+                color-title: black,
+                color-subtitle: $dove-gray,
+                color-text: black,
+                color-btn-border: black,
+                color-other-link-title: $dove-gray,
+                color-other-link: black,
+                color-tab-border-bottom: $SecondaryAlto,
+                color-tab: $dove-gray,
+                color-tab-selected: black,
+                color-tab-svg: $SecondaryAlto,
+                color-link-svg: black,
+        ),
+        dark: (
+                color-background: black,
+                color-title: white,
+                color-subtitle: $Nobel,
+                color-text: $Nobel,
+                color-btn-border: white,
+                color-other-link-title: $Nobel,
+                color-other-link: white,
+                color-tab-border-bottom: $dove-gray,
+                color-tab: $SecondaryAlto,
+                color-tab-selected: white,
+                color-tab-svg: $dove-gray,
+                color-link-svg: white,
+        )
+);
