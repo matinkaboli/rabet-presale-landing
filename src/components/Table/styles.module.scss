@@ -1,0 +1,84 @@
+@import 'src/styles/vars';
+
+.table {
+  margin-bottom: 0 !important;
+  border: 1px solid $Concrete;
+  border-radius: 11px;
+  width: 100%;
+
+  thead th {
+    border: none;
+    font-size: 16px;
+    color: $dove-gray;
+    white-space: nowrap;
+    padding: 12px 24px 4px 24px;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  tbody tr > td {
+    border-top: 1px solid transparent;
+    white-space: nowrap;
+    color: black;
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid $Concrete;
+  }
+
+  thead tr > th {
+    border-bottom: none !important;
+  }
+
+  td a {
+    text-decoration: none !important;
+    color: $DodgerBlue;
+    transition: ease-in;
+  }
+
+  td a:hover {
+    color: $DodgerBlue;
+  }
+}
+
+.table-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $Concrete transparent;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 0;
+  background-color: transparent;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $Concrete;
+  cursor: pointer;
+}
+
+.vertical-scroll {
+  overflow: auto;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+}
+
+.vertical-scroll thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+

@@ -1,0 +1,119 @@
+@import "src/styles/vars";
+
+.layout {
+  margin-top: 157px;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.31;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  margin-left: 2px;
+
+  &-success {
+    background: $JungleGreen;
+  }
+
+  &-failur {
+    background: $Flush-mahogany;
+  }
+}
+
+.par {
+  font-size: 18px;
+  line-height: 1.67;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  padding-bottom: 0;
+  color: $Tundora;
+}
+
+.card {
+  border: 1px solid $Concrete;
+  border-radius: 11px;
+  padding: 32px;
+  margin-top: 24px;
+
+  &-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.42;
+    margin: 0;
+  }
+}
+
+.list {
+  padding-left: 0;
+  margin: 0;
+
+  & > li {
+    font-size: 18px;
+    line-height: 1.56;
+    color: $Tundora;
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.bullet-point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $Tundora;
+  display: block;
+  margin-right: 8px;
+}
+
+
+.progress {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  &-letter {
+    font-weight: normal;
+    color: $dove-gray;
+  }
+
+  &-separator {
+    color: $SecondaryAlto;
+  }
+
+  &-status {
+    font-weight: normal;
+
+    &-success {
+      color: $JungleGreen;
+    }
+
+    &-failur {
+      color: $Flush-mahogany;
+    }
+  }
+}
+
+.progress-bar {
+  margin-top: 25px;
+}
+
+@media (max-width: $sm) {
+  .layout {
+    margin-top: 100px;
+  }
+  .card {
+    padding: 15px 10px;
+  }
+}

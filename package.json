@@ -13,6 +13,7 @@
     "flexboxgrid": "^6.3.1",
     "next": "12.0.7",
     "react": "17.0.2",
+    "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "17.0.2",
     "react-popper-tooltip": "^4.3.1",
     "sass": "^1.45.1"

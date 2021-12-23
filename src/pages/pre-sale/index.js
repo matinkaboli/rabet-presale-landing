@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import WalletLayout from 'src/components/Layout';
 import LongArrowRight from 'src/svgs/LongArrowRight';
-// import Table from 'components/Table';
+import Table from 'src/components/Table';
 
 import styles from './styles.module.scss';
 
@@ -51,7 +51,7 @@ const PreSale = () => {
         </div>
 
         <div className="mt3">
-          {/*<Table tableRows={tableRows} tableHeader={tableHeader} />*/}
+          <Table tableRows={tableRows} tableHeader={tableHeader} />
         </div>
       </div>
     </WalletLayout>

@@ -1,0 +1,111 @@
+@import "src/styles/vars";
+
+.layout {
+  margin-top: 96px;
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid $SecondaryAlto;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 24px 20px;
+  text-align: center;
+
+  &-text {
+    font-size: 16px;
+    line-height: 1.63;
+    margin-top: 8px;
+    font-weight: normal;
+  }
+
+  &-msg {
+    font-size: 18px;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  background: $Concrete;
+  margin: 24px 0;
+}
+
+.box {
+  border: 1px solid $gallery;
+  padding: 10px 7px 10px 12px;
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+.copy-btn {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.copy-text {
+  word-break: break-all;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.63;
+  font-weight: normal;
+}
+
+.note {
+  box-sizing: border-box;
+  width: 400px;
+  padding: 14px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.43;
+  border: solid 1px $Concrete;
+  background-color: $Alabaster;
+  margin-top: 16px;
+
+  span {
+    color: $dove-gray;
+    font-weight: 500;
+  }
+}
+
+.amount {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-title {
+    color: $dove-gray;
+  }
+
+  &-copy {
+   display: flex;
+    align-items: center;
+  }
+}
+
+.ineligible-title, .ineligible-text {
+  font-size: 16px;
+  line-height: 1.63;
+  margin-top: 12px;
+}
+
+.ineligible-title {
+  font-weight: 500;
+}
+
+.ineligible-text {
+  margin-bottom: 16px;
+  color: $dove-gray;
+}
+
+@media(max-width: $sm) {
+  .card, .note {
+    width: 325px;
+  }
+}

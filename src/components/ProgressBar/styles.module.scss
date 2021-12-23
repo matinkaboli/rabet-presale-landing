@@ -1,0 +1,23 @@
+@import "src/styles/vars";
+
+.progress {
+  background-color: $SecondaryAlto;
+  border-radius: 20px;
+  position: relative;
+  height: 4px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.progress-value {
+  background: $JungleGreen;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6px;
+  width: 0;
+  opacity: 0;
+  transition: 0.7s ease 0.3s;
+}

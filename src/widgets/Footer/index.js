@@ -2,11 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { privacyPolicyDir, featuresDir, downloadDir } from 'static/directories';
-import { twitterLink, discordLink, telegramLink } from 'static/links';
-import Discord from 'svgs/Discord';
-import Twitter from 'svgs/Twitter';
-import Telegram from 'svgs/Telegram';
+import { privacyPolicyDir, featuresDir, downloadDir } from 'src/static/directories';
+import { twitterLink, discordLink, telegramLink } from 'src/static/links';
+import Discord from 'src/svgs/Discord';
+import Twitter from 'src/svgs/Twitter';
+import Telegram from 'src/svgs/Telegram';
 
 import styles from './styles.module.scss';
 
