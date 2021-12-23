@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import classNames from 'classnames';
 
 import WalletLayout from 'src/components/Layout';
@@ -9,19 +10,24 @@ import styles from './styles.module.scss';
 
 const PreSale = () => {
   const tableHeader = ['TXN Hash', 'Date', 'Part', 'Amount'];
+
   const tableRows = Array(8).fill(
     <tr>
-      <td width="30%"><a href="/">kobfks80…Kh964Y8I</a></td>
+      <td width="30%"><Link href="/"><a>kobfks80…Kh964Y8I</a></Link></td>
       <td width="25%">1 min ago</td>
-      <td width="20%">3</td>
+      <td width="20%">
+        3
+      </td>
       <td width="25%">200 RBT</td>
     </tr>,
   );
+
   return (
     <WalletLayout>
       <div className={classNames('base-padding', styles.layout)}>
         <h1 className={styles.title}>Pre-sale</h1>
-        <p className={styles.par}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        <p className={styles.par}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
           purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris rhoncus
           aenean vel elit scelerisque
