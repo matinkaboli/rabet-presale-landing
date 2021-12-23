@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import WalletLayout from 'src/components/Layout';
 import FingerPrint from 'src/svgs/fingerPrint';
@@ -7,9 +6,11 @@ import Loading from 'src/svgs/Loading';
 
 import styles from './styles.module.scss';
 
+const classNames = require('classnames')
+
 const ConnectWallet = () => {
   // const sampleStatus = 'error';
-  const sampleStatus = 'default';
+  let sampleStatus = 'default';
   const btnText = sampleStatus === 'error' ? 'Try Again' : 'Connect wallet';
 
   return (
@@ -18,9 +19,11 @@ const ConnectWallet = () => {
         <div className="flex flex-column items-center">
           <div className={styles.card}>
             <div className={
-              classNames(styles['svg-container'],
-                sampleStatus === 'error' && styles['svg-danger'])
-              }
+              classNames(
+                styles['svg-container'],
+                sampleStatus === 'error' && styles['svg-danger'],
+              )
+            }
             >
               <FingerPrint />
             </div>

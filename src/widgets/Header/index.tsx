@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,7 +8,17 @@ import Logo from 'src/svgs/LogoText';
 
 import styles from './styles.module.scss';
 
-const WalletHeader = ({ basic }) => {
+const classNames = require('classnames');
+
+type AppProps = {
+  basic?: boolean
+};
+
+const defaultProps: AppProps = {
+  basic: false,
+};
+
+const WalletHeader = ({ basic }: AppProps) => {
   const [connected, setConnected] = useState(true);
 
   return (
@@ -46,5 +55,7 @@ const WalletHeader = ({ basic }) => {
     </>
   );
 };
+
+WalletHeader.defaultProps = defaultProps;
 
 export default WalletHeader;

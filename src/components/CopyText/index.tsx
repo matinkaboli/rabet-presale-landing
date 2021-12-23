@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import classNames from 'classnames';
 
 import Tooltip from 'src/components/Tooltip';
 
 import styles from './styles.module.scss';
 
-const CopyText = ({ text, button, copyButton }) => {
+const { CopyToClipboard } = require('react-copy-to-clipboard');
+const classNames = require('classnames');
+
+type AppProps = {
+  text: string
+  button?: boolean
+  copyButton?: boolean
+}
+
+const defaultProps = {
+  button: false,
+  copyButton: false,
+};
+
+const CopyText = ({ text, button, copyButton }: AppProps) => {
   const [visible, setVisible] = useState(false);
 
   const [tooltipText, setText] = useState('Copy to clipboard');
@@ -40,7 +52,7 @@ const CopyText = ({ text, button, copyButton }) => {
       onClick={() => { toggle(); }}
       className={classNames(styles.container, copyButton && styles.block)}
     >
-      <Tooltip trigger={['click', 'hover']} tooltipShown={visible} tooltip={tooltipText} placement="top" styleClass="tooltip-copy">
+      <Tooltip tooltip={tooltipText} placement="top">
         <CopyToClipboard text={text}>
           {setCopyBtn()}
         </CopyToClipboard>
@@ -48,5 +60,7 @@ const CopyText = ({ text, button, copyButton }) => {
     </span>
   );
 };
+
+CopyText.defaultProps = defaultProps;
 
 export default CopyText;

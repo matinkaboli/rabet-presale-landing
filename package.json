@@ -1,5 +1,7 @@
 {
   "name": "rabet-presale-landing",
+  "main": "dist/index",
+  "typings": "dist/index",
   "private": true,
   "scripts": {
     "dev": "next dev",

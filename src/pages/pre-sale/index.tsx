@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import classNames from 'classnames';
 
 import WalletLayout from 'src/components/Layout';
 import LongArrowRight from 'src/svgs/LongArrowRight';
 import Table from 'src/components/Table';
 
 import styles from './styles.module.scss';
+
+const classNames = require('classnames');
 
 const PreSale = () => {
   const tableHeader = ['TXN Hash', 'Date', 'Part', 'Amount'];

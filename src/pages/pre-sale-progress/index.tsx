@@ -1,10 +1,11 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import WalletLayout from 'src/components/Layout';
 import ProgressBar from 'src/components/ProgressBar';
 
 import styles from './styles.module.scss';
+
+const classNames = require('classnames')
 
 const PreSaleProgress = () => {
   const points = Array(7).fill(

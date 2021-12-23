@@ -3,7 +3,13 @@ import { usePopperTooltip } from 'react-popper-tooltip';
 
 import styles from './styles.module.scss';
 
-const Tooltip = ({ children, tooltip, placement }) => {
+type AppProps = {
+  children: JSX.Element,
+  tooltip: string | JSX.Element
+  placement: 'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'
+}
+
+const Tooltip = ({ children, tooltip, placement }: AppProps) => {
   const {
     getArrowProps,
     getTooltipProps,

@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import Image from 'next/image';
 
 import WalletLayout from 'src/components/Layout';
@@ -7,6 +6,8 @@ import rabetSrc from 'public/images/rabet-token.png';
 import CopyText from 'src/components/CopyText';
 
 import styles from './styles.module.scss';
+
+const classNames = require('classnames')
 
 const EligiblePayment = () => {
   const isEligible = true;

@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 
 import styles from './styles.module.scss';
 
-const ProgressBar = ({ value }) => {
+type AppProps = {
+  value: number
+}
+
+const ProgressBar = ({ value }: AppProps) => {
   const [style, setStyle] = useState({});
 
   setTimeout(() => {
