@@ -7,7 +7,7 @@ import CopyText from 'src/components/CopyText';
 
 import styles from './styles.module.scss';
 
-const classNames = require('classnames')
+const classNames = require('classnames');
 
 const EligiblePayment = () => {
   const isEligible = true;
@@ -26,7 +26,12 @@ const EligiblePayment = () => {
 
                   <hr className={styles.hr} />
 
-                  <div className={styles['card-msg']}>Please send <span>2,000 XLM</span> to below address</div>
+                  <div className={styles['card-msg']}>
+                    Please send
+                    <span>2,000 XLM</span>
+                    {' '}
+                    to below address
+                  </div>
 
                   <div className={styles.box}>
                     <div className={styles['copy-text']}>
@@ -55,7 +60,9 @@ const EligiblePayment = () => {
 
                 </div>
                 <div className={styles.note}>
-                  <span>Note:</span> After sending the transaction, there is no need to do anything
+                  <span>Note:</span>
+                  {' '}
+                  After sending the transaction, there is no need to do anything
                   and we check it manually, which may take several hours, then we will
                   update your status.
                 </div>

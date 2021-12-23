@@ -5,7 +5,7 @@ import ProgressBar from 'src/components/ProgressBar';
 
 import styles from './styles.module.scss';
 
-const classNames = require('classnames')
+const classNames = require('classnames');
 
 const PreSaleProgress = () => {
   const points = Array(7).fill(
@@ -22,7 +22,8 @@ const PreSaleProgress = () => {
           RBT Pre-sale is Live
           <span className={classNames(styles.status, styles['status-success'])} />
         </h1>
-        <p className={styles.par}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        <p className={styles.par}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
           purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris rhoncus
           aenean vel elit scelerisque
@@ -46,7 +47,8 @@ const PreSaleProgress = () => {
           <ul className={styles.list}>
             {points.map((point) => (
               <li key={point.id}>
-                <span className={styles['bullet-point']} />{point.text}
+                <span className={styles['bullet-point']} />
+                {point.text}
               </li>
             ))}
           </ul>

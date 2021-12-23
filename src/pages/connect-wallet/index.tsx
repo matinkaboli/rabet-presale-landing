@@ -6,10 +6,10 @@ import Loading from 'src/svgs/Loading';
 
 import styles from './styles.module.scss';
 
-const classNames = require('classnames')
+const classNames = require('classnames');
 
 const ConnectWallet = () => {
-  // const sampleStatus = 'error';
+  // let sampleStatus = 'error';
   let sampleStatus = 'default';
   const btnText = sampleStatus === 'error' ? 'Try Again' : 'Connect wallet';
 
