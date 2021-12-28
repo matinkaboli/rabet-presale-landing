@@ -1,13 +1,21 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+
+import WalletLayout from 'src/components/Layout';
+import PresaleProgress from 'src/blocks/Presale/Progress';
+import PresaleOver from 'src/blocks/Presale/Over';
+import PresaleCountDown from 'src/blocks/Presale/CountDown';
 
 import styles from './styles.module.scss';
 
-const Home: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      Hello There
-    </div>
-  )
-}
+const classNames = require('classnames');
 
-export default Home
+const Home: NextPage = () => (
+  <WalletLayout basic>
+    <div className={classNames('base-padding', styles.layout)}>
+      <PresaleOver />
+      {/* <PresaleProgress /> */}
+    </div>
+  </WalletLayout>
+);
+
+export default Home;

@@ -6,13 +6,13 @@ import { twitterLink, discordLink, telegramLink } from 'src/static/links';
 import Discord from 'src/svgs/Discord';
 import Twitter from 'src/svgs/Twitter';
 import Telegram from 'src/svgs/Telegram';
-import { CustomLinkType } from 'src/models';
+import { CustomLink } from 'src/models';
 
 import styles from './styles.module.scss';
 
 const classNames = require('classnames');
 
-const customLink = (link: CustomLinkType) => {
+const customLink = (link: CustomLink) => {
   if (link.external) {
     return <a href={link.link} target="_blank" rel="noreferrer">{link.text}</a>;
   }

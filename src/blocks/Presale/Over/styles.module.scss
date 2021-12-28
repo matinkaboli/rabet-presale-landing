@@ -1,0 +1,31 @@
+@import "src/styles/vars";
+
+.card {
+  margin-top: 40px;
+  width: 400px;
+  box-sizing: border-box;
+  border: 1px solid $SecondaryAlto;
+  border-radius: 4px;
+  padding: 24px 20px;
+  text-align: center;
+
+  @media (max-width: $sm) {
+    width: 325px;
+    padding: 24px 15px;
+    margin-top: 0;
+  }
+
+  &-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 12px 0;
+  }
+
+  &-para {
+    font-size: 16px;
+    line-height: 1.63;
+    color: $dove-gray;
+    margin: 0;
+  }
+}

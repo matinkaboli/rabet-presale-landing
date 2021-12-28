@@ -1,15 +1,15 @@
 import React from 'react';
 
-import WalletLayout from 'src/components/Layout';
 import ProgressBar from 'src/components/ProgressBar';
+import CopyText from 'src/components/CopyText';
+import { ParticipateItem } from 'src/models';
 
 import styles from './styles.module.scss';
-import CopyText from '../../../components/CopyText';
 
 const classNames = require('classnames');
 
-const PreSaleProgress = () => {
-  const points = [
+const PresaleProgress = () => {
+  const items: ParticipateItem[] = [
     {
       id: 1,
       text: (
@@ -41,46 +41,43 @@ const PreSaleProgress = () => {
   ];
 
   return (
-    <WalletLayout>
-      <div className={classNames('base-padding', styles.layout)}>
-        <h1 className={styles.title}>
-          RBT Pre-sale is Live
-          <span className={classNames(styles.status, styles['status-success'])} />
-        </h1>
+    <>
+      <h1 className={styles.title}>
+        RBT Pre-sale is Live
+        <span className={classNames(styles.status, styles['status-success'])} />
+      </h1>
 
-        <div className={styles.card}>
-          <div className={styles.progress}>
-            <span>$120,000 </span>
-            <span className={styles['progress-letter']}>of </span>
-            <span>$400,000 </span>
-            <span className={styles['progress-separator']}>| </span>
-            <span className={classNames(styles['progress-success'], styles['progress-status-success'])}>
-              (20%)
-            </span>
-          </div>
-          <div className={styles['progress-bar']}><ProgressBar value={20} /></div>
+      <div className={styles.card}>
+        <div className={styles.progress}>
+          <span>$120,000 </span>
+          <span className={styles['progress-letter']}>of </span>
+          <span>$400,000 </span>
+          <span className={styles['progress-separator']}>| </span>
+          <span className={classNames(styles['progress-success'], styles['progress-status-success'])}>
+            (20%)
+          </span>
         </div>
-
-        <div className={styles.card}>
-          <h2 className={styles['card-title']}>How to participate?</h2>
-          <p className={styles['card-desc']}>
-            To participate in the presale, you must transfer your desired amount to
-            the presale address. Please, read the following requirements to avoid losing
-            your assets:
-          </p>
-          <ul className={styles.list}>
-            {points.map((point) => (
-              <li key={point.id}>
-                <span className={styles['bullet-point']} />
-                {point.text}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className={styles['progress-bar']}><ProgressBar value={20} /></div>
       </div>
 
-    </WalletLayout>
+      <div className={styles.card}>
+        <h2 className={styles['card-title']}>How to participate?</h2>
+        <p className={styles['card-desc']}>
+          To participate in the presale, you must transfer your desired amount to
+          the presale address. Please, read the following requirements to avoid losing
+          your assets:
+        </p>
+        <ul className={styles.list}>
+          {items.map((item: ParticipateItem) => (
+            <li key={item.id}>
+              <span className={styles['bullet-point']} />
+              {item.text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
-export default PreSaleProgress;
+export default PresaleProgress;
