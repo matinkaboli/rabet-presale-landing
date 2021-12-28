@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Tooltip from 'src/components/Tooltip';
+import IconSheet from 'src/svgs/Sheet';
 
 import styles from './styles.module.scss';
 
@@ -36,7 +37,7 @@ const CopyText = ({ text, button, copyButton }: AppProps) => {
     if (copyButton) {
       return (
         <div className={styles.btn}>
-          <span className="icon-sheet" />
+          <IconSheet />
           Copy
         </div>
       );

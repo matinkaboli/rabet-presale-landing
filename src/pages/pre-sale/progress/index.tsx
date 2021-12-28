@@ -4,16 +4,41 @@ import WalletLayout from 'src/components/Layout';
 import ProgressBar from 'src/components/ProgressBar';
 
 import styles from './styles.module.scss';
+import CopyText from '../../../components/CopyText';
 
 const classNames = require('classnames');
 
 const PreSaleProgress = () => {
-  const points = Array(7).fill(
+  const points = [
     {
-      id: Math.floor(Math.random() * 100),
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      id: 1,
+      text: (
+        <div className={styles['address-box']}>
+          <div>
+            This is the presale address:
+          </div>
+          <div className="flex">
+            <div className={classNames(styles.address)}>
+              GANV4UNF57YP6ONXEGP2VARAW3VZYZ2S6GXG4WMY75TRMIUZWS4XYN7Q
+            </div>
+            <div className="ml1">
+              <CopyText text="test" copyButton />
+            </div>
+          </div>
+          <div>
+            Assets sent to other addresses will be lost.
+          </div>
+        </div>
+      ),
     },
-  );
+    { id: 2, text: 'The minimum and maximum investment amounts are 500 USDC and 30,000 USDC, respectively. If your transferred amount falls outside that range, you’ll lose your funds.' },
+    { id: 3, text: 'There are no KYC requirements; all Stellar addresses can participate.' },
+    { id: 4, text: 'DO NOT send funds via an exchange or wallet that doesn’t support Stellar assets because you’ll receive no tokens and you’ll lose your funds. (We recommend the network’s native wallets such as Rabet, Freighter, LOBSTR, xBull  ….).' },
+    { id: 5, text: 'The hardcap is set to 400,000 USD, and the pre-sale will end as soon as that limit is reached.' },
+    { id: 6, text: 'Users can only send USDC to the pre-sale address, which will be announced on X. Other assets sent to this address will be lost.' },
+    { id: 7, text: 'The portion of the tokens that remain unsold until the end of the pre-sale will be reallocated to the public sale (auction).' },
+    { id: 8, text: 'To protect the community and prevent sudden dumps, the pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month' },
+  ];
 
   return (
     <WalletLayout>
@@ -22,12 +47,6 @@ const PreSaleProgress = () => {
           RBT Pre-sale is Live
           <span className={classNames(styles.status, styles['status-success'])} />
         </h1>
-        <p className={styles.par}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
-          purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris rhoncus
-          aenean vel elit scelerisque
-        </p>
 
         <div className={styles.card}>
           <div className={styles.progress}>
@@ -44,6 +63,11 @@ const PreSaleProgress = () => {
 
         <div className={styles.card}>
           <h2 className={styles['card-title']}>How to participate?</h2>
+          <p className={styles['card-desc']}>
+            To participate in the presale, you must transfer your desired amount to
+            the presale address. Please, read the following requirements to avoid losing
+            your assets:
+          </p>
           <ul className={styles.list}>
             {points.map((point) => (
               <li key={point.id}>

@@ -40,6 +40,7 @@
 }
 
 .card {
+  background-color: white;
   border: 1px solid $Concrete;
   border-radius: 11px;
   padding: 32px;
@@ -50,6 +51,13 @@
     font-weight: 500;
     line-height: 1.42;
     margin: 0;
+  }
+
+  &-desc {
+    font-size: 18px;
+    line-height: 1.56;
+    color: $Tundora;
+    margin: 14px 0 0 0;
   }
 }
 
@@ -64,17 +72,22 @@
     list-style: none;
     margin-top: 24px;
     display: flex;
-    align-items: center;
+  }
+
+  & > li:first-child {
+    margin-top: 32px;
   }
 }
 
 .bullet-point {
   width: 10px;
   height: 10px;
+  min-width: 10px;
   border-radius: 50%;
-  background-color: $Tundora;
+  background-color: $SecondaryAlto;
   display: block;
   margin-right: 8px;
+  margin-top: 8px;
 }
 
 
@@ -107,6 +120,16 @@
 
 .progress-bar {
   margin-top: 25px;
+}
+
+.address-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.address {
+  font-weight: 500;
+  word-break: break-all;
 }
 
 @media (max-width: $sm) {
