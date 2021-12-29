@@ -67,7 +67,7 @@ const DateCountdown = ({ end } : AppProps) => {
             <div key={item.name} className={styles['date-item']}>
               <span>
                 <span className={styles['date-item-value']}>
-                  {item.value}
+                  {(`0${item.value}`).slice(-2)}
                 </span>
                 <span className={styles['date-item-name']}>
                   {item.name.toUpperCase()}
