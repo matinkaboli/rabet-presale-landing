@@ -10,10 +10,11 @@ import styles from './styles.module.scss';
 const classNames = require('classnames');
 
 const Home: NextPage = () => (
-  <WalletLayout basic>
+  <WalletLayout>
     <div className={classNames('base-padding', styles.layout)}>
-      <PresaleOver />
+      {/* <PresaleOver /> */}
       {/* <PresaleProgress /> */}
+      <PresaleCountDown />
     </div>
   </WalletLayout>
 );
