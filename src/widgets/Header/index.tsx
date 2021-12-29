@@ -12,13 +12,15 @@ const classNames = require('classnames');
 
 type AppProps = {
   basic?: boolean
+  useWallet?: boolean
 };
 
-const defaultProps: AppProps = {
+const defaultProps = {
   basic: false,
+  useWallet: true,
 };
 
-const WalletHeader = ({ basic }: AppProps) => {
+const WalletHeader = ({ basic, useWallet }: AppProps) => {
   const [connected, setConnected] = useState(true);
 
   return (
@@ -34,22 +36,24 @@ const WalletHeader = ({ basic }: AppProps) => {
             </Link>
           </li>
 
-          <li className={classNames('inline-block ml-auto flex', styles.connect)}>
-            {connected
-              ? (
-                <div className={styles.wallet}>G123d4…89y42w</div>
-              )
-              : (
-                <button
-                  type="button"
-                  className={classNames(styles.btn, 'btn-primary')}
-                  onClick={() => setConnected(true)}
-                >
-                  Connect wallet
-                </button>
-              )}
-          </li>
-
+          {useWallet
+          && (
+            <li className={classNames('inline-block ml-auto flex', styles.connect)}>
+              {connected
+                ? (
+                  <div className={styles.wallet}>G123d4…89y42w</div>
+                )
+                : (
+                  <button
+                    type="button"
+                    className={classNames(styles.btn, 'btn-primary')}
+                    onClick={() => setConnected(true)}
+                  >
+                    Connect wallet
+                  </button>
+                )}
+            </li>
+          )}
         </ul>
       </div>
     </>

@@ -9,3 +9,5 @@ export type ParticipateItem = {
     id: number
     text: string | JSX.Element
 }
+
+export type Presale = 'unstarted' | 'progress' | 'over'

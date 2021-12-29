@@ -127,6 +127,10 @@
   .logo svg {
     width: 150px;
   }
+
+  .circleImg {
+    display: none;
+  }
 }
 
 @media (min-width: $large-scale) {

@@ -5,16 +5,18 @@ import WalletHeader from 'src/widgets/Header';
 type AppProps = {
     basic?: boolean
     children?: JSX.Element
+    useWallet?: boolean
 };
 
-const defaultProps: AppProps = {
+const defaultProps = {
   basic: false,
   children: undefined,
+  useWallet: true,
 };
 
-const WalletLayout = ({ children, basic }: AppProps) => (
+const WalletLayout = ({ children, basic, useWallet }: AppProps) => (
   <div style={{ paddingBottom: basic ? '160px' : '0' }}>
-    <WalletHeader basic={basic} />
+    <WalletHeader basic={basic} useWallet={useWallet} />
     {children}
     {!basic && <Footer />}
   </div>
