@@ -1,6 +1,29 @@
+@import "src/styles/vars";
 
 .title {
   font-size: 32px;
   font-weight: 500;
   margin: 0 0 28px 0;
+}
+
+.col:first-child {
+  order: 1;
+}
+
+.col:last-child {
+  order: 2;
+}
+
+@media(max-width: $lg) {
+  .title {
+    font-size: 26px;
+  }
+  .col:first-child {
+    order: 2;
+    margin-top: 25px;
+  }
+
+  .col:last-child {
+    order: 1;
+  }
 }

@@ -1,5 +1,12 @@
+@import "src/styles/vars";
 
 .layout {
   margin-top: 157px;
   padding-bottom: 80px;
+}
+
+@media(max-width: $md) {
+  .layout {
+    margin-top: 100px;
+  }
 }
