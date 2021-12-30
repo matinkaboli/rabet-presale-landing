@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+import { Presale } from 'src/models';
+
 import styles from './styles.module.scss';
 
 type AppProps = {
   end: string
+  setPresaleStatus: (arg: Presale) => void
 }
 
-const DateCountdown = ({ end } : AppProps) => {
+const DateCountdown = ({ end, setPresaleStatus } : AppProps) => {
   const [date, setDate] = useState({
     days: 0,
     hours: 0,
@@ -50,8 +53,10 @@ const DateCountdown = ({ end } : AppProps) => {
 
   useEffect(() => {
     let intervalID: ReturnType<typeof setInterval>;
+    setPresaleStatus('progress');
     if (!expired) {
       intervalID = setInterval(() => updateTimer(), 1000);
+      setPresaleStatus('unstarted');
     }
     return () => clearInterval(intervalID);
   }, [expired]);

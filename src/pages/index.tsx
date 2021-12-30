@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 const classNames = require('classnames');
 
 const Home: NextPage = () => {
-  const [status, setStatus] = useState<Presale>('unstarted');
+  const [status, setPresaleStatus] = useState<Presale>('unstarted');
 
   const generatePresale = () => {
     if (status === 'over') {
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     }
 
     if (status === 'unstarted') {
-      return <PresaleCountDown />;
+      return <PresaleCountDown setPresaleStatus={setPresaleStatus} />;
     }
 
     return <PresaleProgress />;
