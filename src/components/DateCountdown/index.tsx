@@ -32,7 +32,7 @@ const DateCountdown = ({ end } : AppProps) => {
       now.getUTCSeconds(),
     );
 
-    const distance = Math.abs(new Date(future).getTime() - new Date(nowUTC).getTime());
+    const distance = new Date(future).getTime() - new Date(nowUTC).getTime();
 
     if (distance < 0) {
       setExpired(true);
@@ -49,8 +49,12 @@ const DateCountdown = ({ end } : AppProps) => {
   };
 
   useEffect(() => {
-    setInterval(() => updateTimer(), 1000);
-  }, []);
+    let intervalID: ReturnType<typeof setInterval>;
+    if (!expired) {
+      intervalID = setInterval(() => updateTimer(), 1000);
+    }
+    return () => clearInterval(intervalID);
+  }, [expired]);
 
   const dateItems = [
     { name: 'Days', value: date.days },
