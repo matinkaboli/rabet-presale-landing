@@ -5,8 +5,8 @@ import 'react-popper-tooltip/dist/styles.css';
 
 import '../styles/global.scss';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  <Component {...pageProps} />
+);
 
-export default MyApp
+export default MyApp;

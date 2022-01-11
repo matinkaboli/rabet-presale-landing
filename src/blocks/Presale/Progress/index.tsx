@@ -1,14 +1,47 @@
-import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 import ProgressBar from 'src/components/ProgressBar';
 import CopyText from 'src/components/CopyText';
 import { ParticipateItem } from 'src/models';
+import useFetch from 'src/hooks/useFetch';
 
 import styles from './styles.module.scss';
 
 const classNames = require('classnames');
 
 const PresaleProgress = () => {
+  const { data, error, loading } = useFetch('/v1/landing');
+  const [asset, setAsset] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      if (data) {
+        const { data: result } = await axios.get(`https://horizon.stellar.org/accounts/${data.Address}`);
+        const foundAsset = result.balances.find((x) =>
+          x.asset_code === data.AssetCode && x.asset_issuer === data.AssetIssuer);
+
+        if (foundAsset) {
+          setAsset(foundAsset);
+        }
+      }
+    })();
+  }, [data]);
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
+
+  if (error) {
+    return <p>Presale has not started yet.</p>;
+  }
+
+  if (!asset) {
+    return <p>Loading</p>;
+  }
+
+  const percent = parseFloat(asset.balance) * 100 / data.TotalRBT;
+
   const items: ParticipateItem[] = [
     {
       id: 1,
@@ -19,10 +52,10 @@ const PresaleProgress = () => {
           </div>
           <div className="flex">
             <div className={classNames(styles.address)}>
-              GANV4UNF57YP6ONXEGP2VARAW3VZYZ2S6GXG4WMY75TRMIUZWS4XYN7Q
+              {data.Address}
             </div>
             <div className="ml1">
-              <CopyText text="test" copyButton />
+              <CopyText text={data.Address} copyButton />
             </div>
           </div>
           <div>
@@ -31,11 +64,14 @@ const PresaleProgress = () => {
         </div>
       ),
     },
-    { id: 2, text: 'The minimum and maximum investment amounts are 500 USDC and 30,000 USDC, respectively. If your transferred amount falls outside that range, you’ll lose your funds.' },
+    {
+      id: 2,
+      text: `The minimum and maximum investment amounts are 500 ${data.AssetCode} and 30,000 ${data.AssetCode}, respectively. If your transferred amount falls outside that range, you’ll lose your funds.`
+    },
     { id: 3, text: 'There are no KYC requirements; all Stellar addresses can participate.' },
     { id: 4, text: 'DO NOT send funds via an exchange or wallet that doesn’t support Stellar assets because you’ll receive no tokens and you’ll lose your funds. (We recommend the network’s native wallets such as Rabet, Freighter, LOBSTR, xBull  ….).' },
-    { id: 5, text: 'The hardcap is set to 400,000 USD, and the pre-sale will end as soon as that limit is reached.' },
-    { id: 6, text: 'Users can only send USDC to the pre-sale address, which will be announced on X. Other assets sent to this address will be lost.' },
+    { id: 5, text: `The hardcap is set to ${data.TotalRBT} ${data.AssetCode}, and the pre-sale will end as soon as that limit is reached.` },
+    { id: 6, text: `Users can only send ${data.AssetCode} to the pre-sale address, which will be announced on X. Other assets sent to this address will be lost.` },
     { id: 7, text: 'The portion of the tokens that remain unsold until the end of the pre-sale will be reallocated to the public sale (auction).' },
     { id: 8, text: 'To protect the community and prevent sudden dumps, the pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month' },
   ];
@@ -44,20 +80,21 @@ const PresaleProgress = () => {
     <>
       <h1 className={styles.title}>
         RBT Pre-sale is Live
+        {' '}
         <span className={classNames(styles.status, styles['status-success'])} />
       </h1>
 
       <div className={styles.card}>
         <div className={styles.progress}>
-          <span>$120,000 </span>
+          <span>{parseFloat(asset.balance).toFixed(2)} {' '}</span>
           <span className={styles['progress-letter']}>of </span>
-          <span>$400,000 </span>
+          <span>{data.TotalRBT} {data.AssetCode} {' '}</span>
           <span className={styles['progress-separator']}>| </span>
           <span className={classNames(styles['progress-success'], styles['progress-status-success'])}>
-            (20%)
+            ({percent.toFixed(2)}%)
           </span>
         </div>
-        <div className={styles['progress-bar']}><ProgressBar value={20} /></div>
+        <div className={styles['progress-bar']}><ProgressBar value={percent} /></div>
       </div>
 
       <div className={styles.card}>

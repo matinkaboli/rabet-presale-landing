@@ -10,14 +10,15 @@ import styles from './styles.module.scss';
 const classNames = require('classnames');
 
 type AppProps = {
-    setPresaleStatus: (arg: Presale) => void
+    setPresaleStatus: (arg: Presale) => void,
+    startingTime: string
 }
 
-const PresaleCountdown = ({ setPresaleStatus }: AppProps) => (
+const PresaleCountdown = ({ setPresaleStatus, startingTime }: AppProps) => (
   <div className={classNames('row justify-center items-center', styles.row)}>
     <div className={classNames('col-lg-5 col-md-6 col-sm-12 col-xs-12', styles.col)}>
       <h1 className={styles.title}>RBT Pre-sale will be live in</h1>
-      <DateCountdown end="3/29/2022 3:00:00 PM" setPresaleStatus={setPresaleStatus} />
+      <DateCountdown end={startingTime} setPresaleStatus={setPresaleStatus} />
     </div>
     <div className={classNames('col-lg-4 col-md-6 col-sm-12 col-xs-12', styles.col)}>
       <Image src={assetsSrc} height={250} width={484} />
