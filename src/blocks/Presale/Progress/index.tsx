@@ -7,6 +7,7 @@ import CopyText from 'src/components/CopyText';
 import { ParticipateItem } from 'src/models';
 import useFetch from 'src/hooks/useFetch';
 import fetcher from 'src/utils/fetcher';
+import Loading from 'src/components/Loading';
 
 import styles from './styles.module.scss';
 import PresaleOver from '../Over';
@@ -36,7 +37,7 @@ const PresaleProgress = () => {
   }, [data]);
 
   if (!error && !data) {
-    return <p>Loading</p>;
+    return <Loading />;
   }
 
   if (error) {
@@ -44,7 +45,7 @@ const PresaleProgress = () => {
   }
 
   if (!asset) {
-    return <p>Loading</p>;
+    return <Loading />;
   }
 
   const percent = parseInt(parseFloat(asset.balance) * 100 / data.TotalRBT);

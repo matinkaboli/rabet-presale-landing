@@ -7,6 +7,7 @@ import PresaleOver from 'src/blocks/Presale/Over';
 import PresaleCountDown from 'src/blocks/Presale/CountDown';
 import { Presale } from 'src/models';
 import useFetch from 'src/hooks/useFetch';
+import Loading from 'src/components/Loading';
 
 import styles from './styles.module.scss';
 
@@ -15,10 +16,6 @@ const classNames = require('classnames');
 const Home: NextPage = () => {
   const { data, error, loading } = useFetch('/v1/get-timer');
   const [status, setPresaleStatus] = useState<Presale>('unstarted');
-
-  if (loading) {
-    return <p>LOADING</p>;
-  }
 
   if (error) {
     return <p>Error! Please try again</p>;
@@ -44,7 +41,10 @@ const Home: NextPage = () => {
   return (
     <WalletLayout basic={status === 'over'} useWallet={status === 'over'}>
       <div className={classNames('base-padding', styles.layout)}>
-        {generatePresale()}
+        {loading ?
+          <Loading />
+          : generatePresale()
+        }
       </div>
     </WalletLayout>
   );
