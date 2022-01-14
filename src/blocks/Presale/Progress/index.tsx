@@ -7,6 +7,7 @@ import { ParticipateItem } from 'src/models';
 import useFetch from 'src/hooks/useFetch';
 
 import styles from './styles.module.scss';
+import PresaleOver from '../Over';
 
 const classNames = require('classnames');
 
@@ -75,6 +76,10 @@ const PresaleProgress = () => {
     { id: 7, text: 'The portion of the tokens that remain unsold until the end of the pre-sale will be reallocated to the public sale (auction).' },
     { id: 8, text: 'To protect the community and prevent sudden dumps, the pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month' },
   ];
+
+  if (percent === 100) {
+    return <PresaleOver />;
+  }
 
   return (
     <>

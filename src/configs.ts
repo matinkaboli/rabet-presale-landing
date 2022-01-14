@@ -1,5 +1,5 @@
 const configs = {
-  SERVER: 'http://localhost:4567',
+  SERVER: 'https://presale-api.rabet.io',
 };
 
 export default configs;
