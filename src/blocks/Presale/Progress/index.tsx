@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -5,6 +6,7 @@ import ProgressBar from 'src/components/ProgressBar';
 import CopyText from 'src/components/CopyText';
 import { ParticipateItem } from 'src/models';
 import useFetch from 'src/hooks/useFetch';
+import fetcher from 'src/utils/fetcher';
 
 import styles from './styles.module.scss';
 import PresaleOver from '../Over';
@@ -12,7 +14,11 @@ import PresaleOver from '../Over';
 const classNames = require('classnames');
 
 const PresaleProgress = () => {
-  const { data, error, loading } = useFetch('/v1/landing');
+  const { data, error } = useSWR('https://presale-api.rabet.io/v1/landing', fetcher, { refreshInterval: 5000 });
+  // const { data, error, loading } = useFetch('/v1/landing');
+
+  console.log(data, error);
+
   const [asset, setAsset] = useState({});
 
   useEffect(() => {
@@ -29,7 +35,7 @@ const PresaleProgress = () => {
     })();
   }, [data]);
 
-  if (loading) {
+  if (!error && !data) {
     return <p>Loading</p>;
   }
 
@@ -41,7 +47,7 @@ const PresaleProgress = () => {
     return <p>Loading</p>;
   }
 
-  const percent = parseFloat(asset.balance) * 100 / data.TotalRBT;
+  const percent = parseInt(parseFloat(asset.balance) * 100 / data.TotalRBT);
 
   const items: ParticipateItem[] = [
     {
@@ -91,12 +97,12 @@ const PresaleProgress = () => {
 
       <div className={styles.card}>
         <div className={styles.progress}>
-          <span>{parseFloat(asset.balance).toFixed(2)} {' '}</span>
+          <span>{parseInt(asset.balance)} {' '}</span>
           <span className={styles['progress-letter']}>of </span>
           <span>{data.TotalRBT} {data.AssetCode} {' '}</span>
           <span className={styles['progress-separator']}>| </span>
           <span className={classNames(styles['progress-success'], styles['progress-status-success'])}>
-            ({percent.toFixed(2)}%)
+            ({percent}%)
           </span>
         </div>
         <div className={styles['progress-bar']}><ProgressBar value={percent} /></div>
