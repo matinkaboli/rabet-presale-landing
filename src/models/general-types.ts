@@ -10,4 +10,10 @@ export type ParticipateItem = {
     text: string | JSX.Element
 }
 
+export interface AssetType {
+    asset_type: string,
+    asset_code: string,
+    asset_issuer: string,
+}
+
 export type Presale = 'unstarted' | 'progress' | 'over'

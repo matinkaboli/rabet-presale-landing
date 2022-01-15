@@ -21,7 +21,7 @@ const PresaleCountdown = ({ setPresaleStatus, startingTime }: AppProps) => (
       <DateCountdown end={startingTime} setPresaleStatus={setPresaleStatus} />
     </div>
     <div className={classNames('col-lg-4 col-md-6 col-sm-12 col-xs-12', styles.col)}>
-      <Image src={assetsSrc} height={250} width={484} />
+      <Image src={assetsSrc} height={250} width={484} alt="Asset" />
     </div>
   </div>
 );

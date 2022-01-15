@@ -59,7 +59,7 @@ const DateCountdown = ({ end, setPresaleStatus } : AppProps) => {
       setPresaleStatus('unstarted');
     }
     return () => clearInterval(intervalID);
-  }, [expired]);
+  }, [expired, end]);
 
   const dateItems = [
     { name: 'Days', value: date.days },

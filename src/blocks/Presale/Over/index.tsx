@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 const PresaleOver = () => (
   <div className="flex justify-center">
     <div className={styles.card}>
-      <Image src={tokenSrc} width={48} height={48} />
+      <Image src={tokenSrc} width={48} height={48} alt="Token" />
       <h4 className={styles['card-title']}>RBT Pre-sale is over.</h4>
       <p className={styles['card-para']}>
         We’d like to thank everyone who participated in the RBT pre-sale.
