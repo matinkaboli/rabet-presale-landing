@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
+import { DateTime } from 'luxon';
 
 import WalletLayout from 'src/components/Layout';
 import PresaleProgress from 'src/blocks/Presale/Progress';
@@ -22,15 +23,13 @@ const Home: NextPage = () => {
   const { data: progressData, error: error2 } = useSWR('/v1/landing');
 
   useEffect(() => {
-    const presaleDate = new Date(startTime?.PresaleStart);
-    const nowPlus7days = new Date(startTime?.PresaleStart);
-    nowPlus7days.setDate(presaleDate.getDate() + 7);
-  
-    const now = new Date();
-  
-    const isInProgress = +now > +presaleDate;
-    const isOver = +now > +nowPlus7days;
-    
+    const presaleDate = DateTime.fromISO(startTime?.PresaleStart, { zone: 'utc' });
+    const startingTimeAfterWeek = presaleDate.plus({ weeks: 1 });
+    const now = DateTime.utc();
+
+    const isInProgress = now.valueOf() > presaleDate.valueOf();
+    const isOver = now.valueOf() > startingTimeAfterWeek.valueOf();
+
     if (isOver) {
       setPresaleStatus('over');
     } else if (isInProgress) {

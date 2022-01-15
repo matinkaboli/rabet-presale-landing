@@ -35,7 +35,16 @@ const DateCountdown = ({ end, setPresaleStatus } : AppProps) => {
       now.getUTCSeconds(),
     );
 
-    const distance = new Date(future).getTime() - new Date(nowUTC).getTime();
+    const futureUTC = new Date(
+      future.getUTCFullYear(),
+      future.getUTCMonth(),
+      future.getUTCDate(),
+      future.getUTCHours(),
+      future.getUTCMinutes(),
+      future.getUTCSeconds(),
+    );
+
+    const distance = futureUTC.getTime() - new Date(nowUTC).getTime();
 
     if (distance < 0) {
       setExpired(true);
