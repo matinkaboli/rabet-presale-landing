@@ -15,9 +15,6 @@ const classNames = require('classnames');
 
 const PresaleProgress = () => {
   const { data, error } = useSWR('/v1/landing', fetcher, { refreshInterval: 5000 });
-  // const { data, error, loading } = useFetch('/v1/landing');
-
-  console.log(data, error);
 
   const [asset, setAsset] = useState({});
 
@@ -33,6 +30,24 @@ const PresaleProgress = () => {
         }
       }
     })();
+
+    const p = setInterval(() => {
+      (async () => {
+        if (data) {
+          const { data: result } = await axios.get(`https://horizon.stellar.org/accounts/${data.Address}`);
+          const foundAsset = result.balances.find((x) =>
+            x.asset_code === data.AssetCode && x.asset_issuer === data.AssetIssuer);
+
+          if (foundAsset) {
+            setAsset(foundAsset);
+          }
+        }
+      })();
+    }, 5000);
+
+    return () => {
+      clearInterval(p);
+    };
   }, [data]);
 
   if (!error && !data) {
@@ -53,9 +68,27 @@ const PresaleProgress = () => {
     {
       id: 1,
       text: (
+        <span>
+          Users can only send
+          {' '}
+          <a
+            href="https://stellar.expert/explorer/public/asset/USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN-1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            USDC
+          </a>
+          {' '}
+          to the pre-sale address.
+        </span>
+      ),
+    },
+    {
+      id: 0,
+      text: (
         <div className={styles['address-box']}>
           <div>
-            This is the presale address:
+            This is the pre-sale address:
           </div>
           <div className="flex">
             <div className={classNames(styles.address)}>
@@ -66,21 +99,71 @@ const PresaleProgress = () => {
             </div>
           </div>
           <div>
-            Assets sent to other addresses will be lost.
+            sent to other addresses will be lost.
           </div>
         </div>
       ),
     },
+    { id: 5, text: `The hardcap is set to ${data.TotalRBT} ${data.AssetCode}, and the pre-sale will end as soon as that limit is reached.` },
     {
       id: 2,
-      text: `The minimum and maximum investment amounts are 500 ${data.AssetCode} and 30,000 ${data.AssetCode}, respectively. If your transferred amount falls outside that range, you’ll lose your funds.`
+      text: `The minimum and maximum investment amounts are 500 ${data.AssetCode} and 30,000 ${data.AssetCode}, respectively. If your transferred amount falls outside that range, you’ll lose your funds.`,
+    },
+    {
+      id: 88,
+      text: 'RBT’s pre-sale price is $0.02 while the base price at the public sale will be $0.04.',
     },
     { id: 3, text: 'There are no KYC requirements; all Stellar addresses can participate.' },
-    { id: 4, text: 'DO NOT send funds via an exchange or wallet that doesn’t support Stellar assets because you’ll receive no tokens and you’ll lose your funds. (We recommend the network’s native wallets such as Rabet, Freighter, LOBSTR, xBull  ….).' },
-    { id: 5, text: `The hardcap is set to ${data.TotalRBT} ${data.AssetCode}, and the pre-sale will end as soon as that limit is reached.` },
-    { id: 6, text: `Users can only send ${data.AssetCode} to the pre-sale address, which will be announced on X. Other assets sent to this address will be lost.` },
+    {
+      id: 6,
+      text: 'The pre-sale will end on January 23, 14:00 UTC unless the hardcap is reached before that date, in which case the pre-sale will end immediately.',
+    },
+    {
+      id: 89,
+      text: (
+        <span>
+          DO NOT send funds via an exchange or wallet
+          that doesn’t support Stellar assets because
+          you’ll receive no RBT tokens and you’ll lose your funds.
+          (We recommend the network’s native wallets such as
+          {' '}
+          <a
+            href="https://rabet.io"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Rabet
+          </a>
+          {', '}
+          <a
+            href="https://www.freighter.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Freighter
+          </a>
+          {', '}
+          <a
+            href="https://lobstr.co"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LOBSTR
+          </a>
+          {', '}
+          <a
+            href="https://xbull.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            xBull
+          </a>
+          ).
+        </span>
+      ),
+    },
     { id: 7, text: 'The portion of the tokens that remain unsold until the end of the pre-sale will be reallocated to the public sale (auction).' },
-    { id: 8, text: 'To protect the community and prevent sudden dumps, the pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month' },
+    { id: 8, text: 'The pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month.' },
   ];
 
   if (percent >= 99) {

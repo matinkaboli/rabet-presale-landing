@@ -17,7 +17,7 @@ type AppProps = {
 
 const defaultProps = {
   basic: false,
-  useWallet: true,
+  useWallet: false,
 };
 
 const WalletHeader = ({ basic, useWallet }: AppProps) => {

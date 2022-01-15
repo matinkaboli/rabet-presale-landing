@@ -17,7 +17,7 @@ type AppProps = {
 const PresaleCountdown = ({ setPresaleStatus, startingTime }: AppProps) => (
   <div className={classNames('row justify-center items-center', styles.row)}>
     <div className={classNames('col-lg-5 col-md-6 col-sm-12 col-xs-12', styles.col)}>
-      <h1 className={styles.title}>RBT Pre-sale will be live in</h1>
+      <h1 className={styles.title}>The pre-sale will be live on January 16, 14: 00 UTC.</h1>
       <DateCountdown end={startingTime} setPresaleStatus={setPresaleStatus} />
     </div>
     <div className={classNames('col-lg-4 col-md-6 col-sm-12 col-xs-12', styles.col)}>
