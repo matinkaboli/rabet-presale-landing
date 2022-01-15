@@ -83,7 +83,7 @@ const PresaleProgress = () => {
     { id: 8, text: 'To protect the community and prevent sudden dumps, the pre-sale tokens will be locked for 3 months after the TGE. After that period, 5% of the tokens will be released each month. The released tokens will be transferred to the investors’ addresses on the first day of each month' },
   ];
 
-  if (percent === 100) {
+  if (percent >= 99) {
     return <PresaleOver />;
   }
 
