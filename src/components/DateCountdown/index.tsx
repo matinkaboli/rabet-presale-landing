@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { DateTime } from 'luxon';
 
 import { Presale } from 'src/models';
 
@@ -18,33 +19,16 @@ const DateCountdown = ({ end, setPresaleStatus } : AppProps) => {
   });
   const [expired, setExpired] = useState(false);
 
-  const future = new Date(end);
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
 
   const updateTimer = () => {
-    const now = new Date();
-    const nowUTC = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      now.getUTCHours(),
-      now.getUTCMinutes(),
-      now.getUTCSeconds(),
-    );
+    const presaleDate = DateTime.fromISO(end, { zone: 'utc' });
+    const now = DateTime.utc();
 
-    const futureUTC = new Date(
-      future.getUTCFullYear(),
-      future.getUTCMonth(),
-      future.getUTCDate(),
-      future.getUTCHours(),
-      future.getUTCMinutes(),
-      future.getUTCSeconds(),
-    );
-
-    const distance = futureUTC.getTime() - new Date(nowUTC).getTime();
+    const distance = presaleDate.valueOf() - now.valueOf();
 
     if (distance < 0) {
       setExpired(true);
