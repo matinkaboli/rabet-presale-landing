@@ -81,7 +81,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <WalletLayout basic={status === 'over'} useWallet={status === 'over'}>
+    <WalletLayout basic={status === 'over'} useWallet>
       <div className={classNames('base-padding', styles.layout)}>
         {generatePresale()}
       </div>

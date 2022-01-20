@@ -11,12 +11,12 @@ type AppProps = {
 const defaultProps = {
   basic: false,
   children: undefined,
-  useWallet: false,
+  useWallet: true,
 };
 
 const WalletLayout = ({ children, basic, useWallet }: AppProps) => (
   <div style={{ paddingBottom: basic ? '160px' : '0' }}>
-    <WalletHeader basic={basic} useWallet={false} />
+    <WalletHeader basic={basic} useWallet={useWallet} />
     {children}
     {!basic && <Footer />}
   </div>

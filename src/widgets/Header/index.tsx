@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
+import shorter from 'src/utils/shorter';
+import useConnect from 'src/hooks/userConnect';
 
 import circle from 'public/images/combined-circle.png';
 import * as dir from 'src/static/directories';
@@ -17,11 +20,16 @@ type AppProps = {
 
 const defaultProps = {
   basic: false,
-  useWallet: false,
+  useWallet: true,
 };
 
 const WalletHeader = ({ basic, useWallet }: AppProps) => {
-  const [connected, setConnected] = useState(true);
+  const router = useRouter();
+  const { isConnected, publicKey } = useConnect();
+
+  const navigate = () => {
+    router.push('/connect');
+  };
 
   return (
     <>
@@ -39,15 +47,15 @@ const WalletHeader = ({ basic, useWallet }: AppProps) => {
           {useWallet
           && (
             <li className={classNames('inline-block ml-auto flex', styles.connect)}>
-              {connected
+              {isConnected
                 ? (
-                  <div className={styles.wallet}>G123d4…89y42w</div>
+                  <div className={styles.wallet}>{shorter(publicKey)}</div>
                 )
                 : (
                   <button
                     type="button"
                     className={classNames(styles.btn, 'btn-primary')}
-                    onClick={() => setConnected(true)}
+                    onClick={navigate}
                   >
                     Connect wallet
                   </button>
