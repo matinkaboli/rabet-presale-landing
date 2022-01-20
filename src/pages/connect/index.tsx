@@ -16,8 +16,6 @@ const ConnectWallet = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState('default');
 
-  console.log(isConnected);
-
   if (isConnected) {
     router.push('/dashboard');
     return <p>loading.</p>;
@@ -64,7 +62,7 @@ const ConnectWallet = () => {
                 </div>
                 <div className={styles['card-text']}>
                   {status === 'error'
-                    ? 'Could not connect to wallet'
+                    ? 'Please connect your Rabet'
                     : 'Please connect your Rabet'}
                 </div>
                 <button

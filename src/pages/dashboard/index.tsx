@@ -27,8 +27,7 @@ const Dashboard = () => {
   const router = useRouter();
   const { isConnected, publicKey } = useConnect();
   const [showData, setShowData] = useState(false);
-  // const { data, error } = useSWR(`/v1/dashboard/${publicKey}`, fetcher);
-  const { data, error } = useSWR(`/v1/dashboard/GCLQTGIHAXINN5AB6T5D7JIPJX5RY23KTGGY5FO2ZSFRRUU3J2EODJH3`, fetcher);
+  const { data, error } = useSWR(`/v1/dashboard/${publicKey}`, fetcher);
 
   useEffect(() => {
     if (isConnected) {
