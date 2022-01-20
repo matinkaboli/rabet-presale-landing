@@ -63,6 +63,23 @@
   }
 }
 
+.box-no-transaction {
+  height: 190px;
+  margin: 32px 0 0px 0px;
+  text-align: center;
+  border-radius: 11px;
+  border: solid 1px #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    font-size: 16px;
+    line-height: 1.63;
+    color: #6c6c6c;
+  }
+}
+
 @media(max-width: $sm) {
   .layout {
     margin-top: 100px;

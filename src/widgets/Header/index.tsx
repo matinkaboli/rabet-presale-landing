@@ -31,6 +31,10 @@ const WalletHeader = ({ basic, useWallet }: AppProps) => {
     router.push('/connect');
   };
 
+  const handleClick = () => {
+    router.push('/dashboard');
+  }
+
   return (
     <>
       {!basic && <div className={styles.circleImg}><Image src={circle} width={340} height={331} alt="circle" /></div>}
@@ -49,7 +53,13 @@ const WalletHeader = ({ basic, useWallet }: AppProps) => {
             <li className={classNames('inline-block ml-auto flex', styles.connect)}>
               {isConnected
                 ? (
-                  <div className={styles.wallet}>{shorter(publicKey)}</div>
+                  <div
+                    className={styles.wallet}
+                    onClick={handleClick}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {shorter(publicKey)}
+                  </div>
                 )
                 : (
                   <button

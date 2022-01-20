@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { DateTime } from 'luxon';
+import { useRouter } from 'next/router';
 
+import commaNumber from 'src/utils/commaNumber';
 import { TransactionType } from 'src/models';
 import configs from 'src/configs';
 import shorter from 'src/utils/shorter';
@@ -18,15 +20,15 @@ const classNames = require('classnames');
 const fetcher = (resource: string) => {
   const URL = `${configs.SERVER}${resource}`;
 
-  return axios.get(URL).then((res) => {
-    return res.data;
-  });
+  return axios.get(URL).then((res) => res.data);
 };
 
 const Dashboard = () => {
+  const router = useRouter();
   const { isConnected, publicKey } = useConnect();
   const [showData, setShowData] = useState(false);
-  const { data, error } = useSWR(`/v1/dashboard/${publicKey}`, fetcher);
+  // const { data, error } = useSWR(`/v1/dashboard/${publicKey}`, fetcher);
+  const { data, error } = useSWR(`/v1/dashboard/GCLQTGIHAXINN5AB6T5D7JIPJX5RY23KTGGY5FO2ZSFRRUU3J2EODJH3`, fetcher);
 
   useEffect(() => {
     if (isConnected) {
@@ -59,12 +61,10 @@ const Dashboard = () => {
 
   if (error) {
     if (error.message.includes('404')) {
+      router.push('/not-eligible');
+
       return (
-        <WalletLayout>
-          <div className={classNames('base-padding', styles.layout)}>
-            <h1 className={styles.title}>Address not found in presale server.</h1>
-          </div>
-        </WalletLayout>
+        <p>Redirecting</p>
       );
     }
 
@@ -103,7 +103,7 @@ const Dashboard = () => {
         {transactions.length - i}
       </td>
       <td width="25%">
-        {x.Amount / 0.02}
+        {commaNumber(x.Amount / 0.02)}
         {' '}
         RBT
       </td>
@@ -115,20 +115,19 @@ const Dashboard = () => {
       <div className={classNames('base-padding', styles.layout)}>
         <h1 className={styles.title}>Pre-sale</h1>
         <p className={styles.par}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
-          purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris rhoncus
-          aenean vel elit scelerisque
+          Thank you for your participation in the RBT presales.
+          You can check your total amount of purchase and
+          the status of your received RBTs in the dashboard below.
         </p>
 
         <div className={styles.details}>
           <div className={classNames(styles.box, 'flex justify-center flex-column justify-center')}>
             <div className={styles['box-value']}>
-              {account.Amount}
+              {commaNumber(account.Amount)}
               {' '}
               USDC
               <LongArrowRight />
-              {purchasedAmount}
+              {commaNumber(purchasedAmount)}
               {' '}
               RBT
             </div>
@@ -138,7 +137,7 @@ const Dashboard = () => {
             <div className="row justify-center" style={{ width: '100%' }}>
               <div className={classNames(styles.receive, 'col-lg-3 col-md-4 col-sm-6 col-6 flex justify-center flex-column justify-center')}>
                 <div className={styles['box-value']}>
-                  {remainingAmount}
+                  {commaNumber(remainingAmount)}
                   {' '}
                   RBT
                 </div>
@@ -146,7 +145,7 @@ const Dashboard = () => {
               </div>
               <div className={classNames(styles.remain, 'col-lg-3 col-md-4 col-sm-6 col-6 flex justify-center flex-column justify-center')}>
                 <div className={styles['box-value']}>
-                  {paidAmount}
+                  {commaNumber(paidAmount)}
                   {' '}
                   RBT
                 </div>
@@ -157,7 +156,17 @@ const Dashboard = () => {
         </div>
 
         <div className="mt3">
-          <Table tableRows={tableRows} tableHeader={tableHeader} />
+          {transactions.length ? (
+            <Table tableRows={tableRows} tableHeader={tableHeader} />
+          ) : (
+            <div className={styles['box-no-transaction']}>
+              <p>
+                You will receive your RBT tokens three months after the TGE,
+                <br />
+                which will be 5% of your purchase per month.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </WalletLayout>

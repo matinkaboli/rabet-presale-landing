@@ -104,6 +104,7 @@ const Footer = () => (
       <div className="col-lg-2 col-md-4 col-sm-4 col-xs-12">
         <h5 className={styles.title}>
           Social
+          {' '}
           <span>network</span>
         </h5>
         <ul className={classNames(styles.ul, styles.social)}>
