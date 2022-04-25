@@ -80,6 +80,26 @@
   }
 }
 
+.status-claimed {
+  color: $dove-gray;
+}
+
+.status-expired {
+  color: $Flush-mahogany;
+}
+
+.claim {
+  cursor: pointer;
+  background-color: black;
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  width: 66px;
+  height: 32px;
+  border-radius: 2px;
+}
+
 @media(max-width: $sm) {
   .layout {
     margin-top: 100px;

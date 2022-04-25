@@ -84,11 +84,36 @@ const Dashboard = () => {
   const remainingAmount = (account.Amount - paid) / 0.02;
   const paidAmount = paid / 0.02;
 
-  const tableHeader = ['TXN Hash', 'Date', 'Part', 'Amount'];
+  const status = 'claimed';
+  const generateTitle = () => {
+    if (status === 'claimed') {
+      return (
+        <span className={styles['status-claimed']}>
+          Claimed
+        </span>
+      );
+    }
+
+    if (status === 'expired') {
+      return (
+        <span className={styles['status-expired']}>
+          Expired
+        </span>
+      );
+    }
+
+    return (
+      <button type="button" className={styles.claim}>
+        claim
+      </button>
+    );
+  };
+
+  const tableHeader = ['TXN Hash', 'Date', 'Part', 'Amount', 'Title'];
 
   const tableRows = transactions.map((x: TransactionType, i: number) => (
     <tr key={x.Hash}>
-      <td width="30%">
+      <td width="24%">
         <a
           href={`https://stellar.expert/explorer/public/tx/${x.Hash}`}
           target="_blank"
@@ -97,15 +122,16 @@ const Dashboard = () => {
           {shorter(x.Hash)}
         </a>
       </td>
-      <td width="25%">{DateTime.fromISO(x.UpdatedAt).toRelativeCalendar()}</td>
-      <td width="20%">
+      <td width="19%">{DateTime.fromISO(x.UpdatedAt).toRelativeCalendar()}</td>
+      <td width="19%">
         {transactions.length - i}
       </td>
-      <td width="25%">
+      <td width="19%">
         {commaNumber(x.Amount / 0.02)}
         {' '}
         RBT
       </td>
+      <td width="19%">{generateTitle()}</td>
     </tr>
   ));
 
